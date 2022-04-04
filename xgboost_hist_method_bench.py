@@ -7,6 +7,7 @@
 
 import argparse
 import xgboost as xgb
+import daal4py as d4p
 from bench_utils import *
 
 N_PERF_RUNS = 5
