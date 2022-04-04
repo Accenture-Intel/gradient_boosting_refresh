@@ -52,13 +52,13 @@ def load_dataset(dataset):
 
     x_train, y_train, x_test, y_test, n_classes = datasets_dict[dataset](DTYPE)
 
-    if n_classes == -1:
-        xgb_params['objective'] = 'reg:squarederror'
-    elif n_classes == 2:
-        xgb_params['objective'] = 'binary:logistic'
-    else:
-        xgb_params['objective'] = 'multi:softprob'
-        xgb_params['num_class'] = n_classes
+#     if n_classes == -1:
+#         xgb_params['objective'] = 'reg:squarederror'
+#     elif n_classes == 2:
+#         xgb_params['objective'] = 'binary:logistic'
+#     else:
+#         xgb_params['objective'] = 'multi:softprob'
+#         xgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
