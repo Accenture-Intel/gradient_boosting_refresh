@@ -23,9 +23,12 @@ xgb_params = {
 
 def xbg_fit():
     global model_xgb, daal_model
-    dtrain = xgb.DMatrix(x_train, label=y_train)
-    model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
-    daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
+#     dtrain = xgb.DMatrix(x_train, label=y_train)
+#     model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
+#     daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
+    model_xgb = xgb.XGBClassifier(xgb_params)
+    model_xgb.fit(x_train, y_train)
+
 
 def xgb_predict_of_train_data():
     global result_predict_xgb_train, daal_prediction_train
@@ -55,7 +58,7 @@ def load_dataset(dataset):
     }
 
     x_train, y_train, x_test, y_test, n_classes = datasets_dict[dataset](DTYPE)
-
+    print("n_classes: ", n_classes)
     if n_classes == -1:
         xgb_params['objective'] = 'reg:squarederror'
     elif n_classes == 2:
