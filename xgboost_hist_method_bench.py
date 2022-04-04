@@ -28,16 +28,23 @@ def xbg_fit():
     global model_xgb
     dtrain = xgb.DMatrix(x_train, label=y_train)
     model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
+    daal_model = d4p.get_gbt_model_from_xgboost(model_xgb.get_booster())
 
 def xgb_predict_of_train_data():
     global result_predict_xgb_train
-    dtest = xgb.DMatrix(x_train)
-    result_predict_xgb_train = model_xgb.predict(dtest)
+    # dtest = xgb.DMatrix(x_train)
+    # result_predict_xgb_train = model_xgb.predict(dtest)
+    daal_prediction =
+          d4p.gbt_classification_prediction(nClasses = n_classes)
+             .compute(x_train, daal_model).prediction
 
 def xgb_predict_of_test_data():
     global result_predict_xgb_test
-    dtest = xgb.DMatrix(x_test)
-    result_predict_xgb_test = model_xgb.predict(dtest)
+    # dtest = xgb.DMatrix(x_test)
+    # result_predict_xgb_test = model_xgb.predict(dtest)
+    daal_prediction =
+          d4p.gbt_classification_prediction(nClasses = n_classes)
+             .compute(x_test, daal_model).prediction
 
 
 def load_dataset(dataset):
