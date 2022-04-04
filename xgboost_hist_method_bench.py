@@ -28,16 +28,16 @@ def xbg_fit():
     daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
 
 def xgb_predict_of_train_data():
-    global result_predict_xgb_train
-    # dtest = xgb.DMatrix(x_train)
+    global result_predict_xgb_train, daal_prediction_train
+    dtest = xgb.DMatrix(x_train)
     # result_predict_xgb_train = model_xgb.predict(dtest)
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_train, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(dtest, daal_model)
 
 def xgb_predict_of_test_data():
-    global result_predict_xgb_test
-    # dtest = xgb.DMatrix(x_test)
+    global result_predict_xgb_test, daal_prediction_test
+    dtest = xgb.DMatrix(x_test)
     # result_predict_xgb_test = model_xgb.predict(dtest)
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_test, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(dtest, daal_model)
 
 
 def load_dataset(dataset):
@@ -104,8 +104,10 @@ def main():
 
     print("Compute quality metrics...")
 
-    train_loglos = compute_logloss(y_train, result_predict_xgb_train)
-    test_loglos = compute_logloss(y_test, result_predict_xgb_test)
+#     train_loglos = compute_logloss(y_train, result_predict_xgb_train)
+#     test_loglos = compute_logloss(y_test, result_predict_xgb_test)
+    train_loglos = compute_logloss(y_train, daal_prediction_train)
+    test_loglos = compute_logloss(y_test, daal_prediction_test)
 
     print("LogLoss for train data set = {:.6f}".format(train_loglos))
     print("LogLoss for test  data set = {:.6f}".format(test_loglos))
