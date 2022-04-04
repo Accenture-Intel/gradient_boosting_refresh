@@ -17,7 +17,7 @@ xgb_params = {
     'max_depth':                    8,
     'min-child-weight':             1,
     'max_leaves':                   2**8,
-    'tree_method':                  hist,
+    'tree_method':                  'hist',
     'n_estimators':                 1000
 }
 
