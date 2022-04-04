@@ -34,17 +34,13 @@ def xgb_predict_of_train_data():
     global result_predict_xgb_train
     # dtest = xgb.DMatrix(x_train)
     # result_predict_xgb_train = model_xgb.predict(dtest)
-    daal_prediction =
-          d4p.gbt_classification_prediction(nClasses = n_classes)
-             .compute(x_train, daal_model).prediction
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_train, daal_model).prediction
 
 def xgb_predict_of_test_data():
     global result_predict_xgb_test
     # dtest = xgb.DMatrix(x_test)
     # result_predict_xgb_test = model_xgb.predict(dtest)
-    daal_prediction =
-          d4p.gbt_classification_prediction(nClasses = n_classes)
-             .compute(x_test, daal_model).prediction
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_test, daal_model).prediction
 
 
 def load_dataset(dataset):
