@@ -45,7 +45,7 @@ def xgb_predict_of_test_data():
 
 
 def load_dataset(dataset):
-    global x_train, y_train, x_test, y_test
+    global x_train, y_train, x_test, y_test, n_classes
 
     try:
         os.mkdir(DATASET_DIR)
