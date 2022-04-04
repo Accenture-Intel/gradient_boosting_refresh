@@ -6,7 +6,7 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 xgb_params = {
-    'verbosity':                    0,
+#     'verbosity':                    0,
     'alpha':                        0.9,
     'max_bin':                      256,
     'scale_pos_weight':             2,
@@ -15,10 +15,10 @@ xgb_params = {
     'reg_lambda':                   1,
     "min_child_weight":             0,
     'max_depth':                    8,
-    'max_leaves':                   2**8,
-    'predictor':                    'cpu_predictor',
-    'tree_method':                  'hist',
-    'n_estimators':                 1000
+    'max_leaves':                   2**8
+#     'predictor':                    'cpu_predictor',
+#     'tree_method':                  'hist',
+#     'n_estimators':                 1000
 }
 
 def xbg_fit():
@@ -72,19 +72,19 @@ def parse_args():
     args = parser.parse_args()
     N_PERF_RUNS = args.n_runs
 
-#     xgb_params['n_estimators'] = args.n_iter
+    xgb_params['n_estimators'] = args.n_iter
 
-#     if args.log:
-#         xgb_params['verbosity'] = 3
-#     else:
-#          xgb_params['silent'] = 1
+    if args.log:
+        xgb_params['verbosity'] = 3
+    else:
+         xgb_params['silent'] = 1
 
-#     if args.hw == "cpu":
-#         xgb_params['tree_method'] = 'hist'
-#         xgb_params['predictor']   = 'cpu_predictor'
-#     elif args.hw == "gpu":
-#         xgb_params['tree_method'] = 'gpu_hist'
-#         xgb_params['predictor']   = 'gpu_predictor'
+    if args.hw == "cpu":
+        xgb_params['tree_method'] = 'hist'
+        xgb_params['predictor']   = 'cpu_predictor'
+    elif args.hw == "gpu":
+        xgb_params['tree_method'] = 'gpu_hist'
+        xgb_params['predictor']   = 'gpu_predictor'
 
     load_dataset(args.dataset)
 
