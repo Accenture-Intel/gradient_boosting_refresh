@@ -6,6 +6,7 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 xgb_params = {
+    'verbosity':                    0,
     'alpha':                        0.9,
     'max_bin':                      256,
     'scale_pos_weight':             2,
@@ -14,26 +15,25 @@ xgb_params = {
     'reg_lambda':                   1,
     "min_child_weight":             0,
     'max_depth':                    8,
-    'min-child-weight':             1,
     'max_leaves':                   2**8,
+    'objective':                    'binary:logistic',
+    'predictor':                    'cpu_predictor',
     'tree_method':                  'hist',
     'n_estimators':                 1000
 }
 
 def xbg_fit():
     global model_xgb
-    dtrain = xgb.DMatrix(x_train, label=y_train)
-    model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
+    model_xgb = xgb.XGBClassifier(xgb_params)
+    model_xgb.fit(x_train, label=y_train)
 
 def xgb_predict_of_train_data():
     global result_predict_xgb_train
-    dtest = xgb.DMatrix(x_train)
-    result_predict_xgb_train = model_xgb.predict(dtest)
+    result_predict_xgb_train = model_xgb.predict(x_train)
 
 def xgb_predict_of_test_data():
     global result_predict_xgb_test
-    dtest = xgb.DMatrix(x_test)
-    result_predict_xgb_test = model_xgb.predict(dtest)
+    result_predict_xgb_test = model_xgb.predict(xtest)
 
 
 def load_dataset(dataset):
@@ -73,19 +73,19 @@ def parse_args():
     args = parser.parse_args()
     N_PERF_RUNS = args.n_runs
 
-    xgb_params['n_estimators'] = args.n_iter
+#     xgb_params['n_estimators'] = args.n_iter
 
-    if args.log:
-        xgb_params['verbosity'] = 3
-    else:
-         xgb_params['silent'] = 1
+#     if args.log:
+#         xgb_params['verbosity'] = 3
+#     else:
+#          xgb_params['silent'] = 1
 
-    if args.hw == "cpu":
-        xgb_params['tree_method'] = 'hist'
-        xgb_params['predictor']   = 'cpu_predictor'
-    elif args.hw == "gpu":
-        xgb_params['tree_method'] = 'gpu_hist'
-        xgb_params['predictor']   = 'gpu_predictor'
+#     if args.hw == "cpu":
+#         xgb_params['tree_method'] = 'hist'
+#         xgb_params['predictor']   = 'cpu_predictor'
+#     elif args.hw == "gpu":
+#         xgb_params['tree_method'] = 'gpu_hist'
+#         xgb_params['predictor']   = 'gpu_predictor'
 
     load_dataset(args.dataset)
 
