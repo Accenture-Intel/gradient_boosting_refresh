@@ -25,7 +25,7 @@ xgb_params = {
 def xbg_fit():
     global model_xgb
     model_xgb = xgb.XGBClassifier(xgb_params)
-    model_xgb.fit(x_train, label=y_train)
+    model_xgb.fit(x_train, y_train)
 
 def xgb_predict_of_train_data():
     global result_predict_xgb_train
