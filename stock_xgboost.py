@@ -11,22 +11,24 @@ xgb_params = {
     'alpha':                        0.9,
     'max_bin':                      256,
     'scale_pos_weight':             2,
-    'learning_rate':                0.1,
-    'subsample':                    1,
-    'reg_lambda':                   1,
-    "min_child_weight":             0,
+    'learning_rate':                0.3,
+#     'subsample':                    1,
+    'lambda_l2':                    1,
+#     "min_child_weight":             0,
     'max_depth':                    8,
     'max_leaves':                   2**8,
-    'objective':                    'binary:logistic',
-    'predictor':                    'cpu_predictor',
-    'tree_method':                  'hist',
-    'n_estimators':                 1000
+    'objective':                    'multi:softmax',
+#     'predictor':                    'cpu_predictor',
+#     'tree_method':                  'hist',
+#     'n_estimators':                 1000,
+    'num_class':                    5
+
 }
 
 def xbg_fit():
     global model_xgb
     dtrain = xgb.DMatrix(x_train, label=y_train)
-    model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
+    model_xgb = xgb.train(xgb_params, dtrain)
 
 def xgb_predict_of_train_data():
     global result_predict_xgb_train
