@@ -30,20 +30,18 @@ def xbg_fit():
     model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
     daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
 
-
-
 def xgb_predict_of_train_data():
     global daal_prediction_train, pred_train_time
     dtest = xgb.DMatrix(x_train)
     start = time.time()
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(dtest, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(y_train, daal_model)
     pred_train_time = time.time() - start
 
 def xgb_predict_of_test_data():
     global daal_prediction_test, pred_test_time
     dtest = xgb.DMatrix(x_test)
     start = time.time()
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(dtest, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_test, daal_model)
     pred_test_time = time.time() - start
 
 
