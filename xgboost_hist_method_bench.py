@@ -1,10 +1,3 @@
-#*******************************************************************************
-# Copyright 2017-2019 by Contributors
-# \file xgboost_hist_method_bench.py
-# \brief a benchmark for 'hist' tree_method on both CPU/GPU arhitectures
-# \author Egor Smirnov
-#*******************************************************************************
-
 import argparse
 import xgboost as xgb
 import daal4py as d4p
@@ -22,7 +15,10 @@ xgb_params = {
     'reg_lambda':                   1,
     "min_child_weight":             0,
     'max_depth':                    8,
+    'min-child-weight':             1,
     'max_leaves':                   2**8,
+    'tree_method':                  hist,
+    'n_estimators':                 1000
 }
 
 def xbg_fit():
@@ -35,13 +31,13 @@ def xgb_predict_of_train_data():
     global result_predict_xgb_train
     # dtest = xgb.DMatrix(x_train)
     # result_predict_xgb_train = model_xgb.predict(dtest)
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_train, daal_model).prediction
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_train, daal_model)
 
 def xgb_predict_of_test_data():
     global result_predict_xgb_test
     # dtest = xgb.DMatrix(x_test)
     # result_predict_xgb_test = model_xgb.predict(dtest)
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_test, daal_model).prediction
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_test, daal_model)
 
 
 def load_dataset(dataset):
