@@ -26,20 +26,17 @@ xgb_params = {
 def xbg_fit():
     global model_xgb, daal_model
     dtrain = xgb.DMatrix(x_train, y_train)  
-    model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
+    model_xgb = xgb.train(xgb_params, dtrain, num_boost_round=100)
     daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
 
-def xgb_predict_of_train_data():
-    global daal_prediction_train, pred_train_time
-    start = time.time()
-    daal_prediction_test1 = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
-    pred_train_time = time.time() - start
+def xgb_stock_predict():
+    global daal_prediction_train
+    dtest = xgb.DMatrix(x_test)
+    result_predict_xgb_test = model_xgb.predict(dtest)
 
-def xgb_predict_of_test_data():
-    global daal_prediction_test, pred_test_time
-    start = time.time()
+def xgb_daal_predict():
+    global daal_prediction_test
     daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
-    pred_test_time = time.time() - start
 
 
 def load_dataset(dataset):
@@ -65,15 +62,13 @@ def load_dataset(dataset):
         xgb_params['objective'] = 'binary:logistic'
     else:
         xgb_params['objective'] = 'multi:softprob'
-        xgb_params['num_class'] = n_classes
+    xgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
     parser = argparse.ArgumentParser()
 #     parser.add_argument('--n_iter', required=False, type=int, default=1000)
     parser.add_argument('--n_runs', default=N_PERF_RUNS, required=False, type=int)
-#     parser.add_argument('--hw', choices=['cpu', 'gpu'], metavar='stage', required=False, default='cpu')
-#     parser.add_argument('--log', metavar='stage', required=False, type=bool, default=False)
     parser.add_argument('--dataset', choices=['higgs1m', "airline-ohe", "msrank-10k"],
             metavar='stage', required=True)
 
@@ -88,15 +83,9 @@ def main():
 
     print("Running ...")
     measure(xbg_fit,                   "XGBOOST training            ", N_PERF_RUNS)
-#     measure(xgb_predict_of_train_data, "XGBOOST predict (train data)", N_PERF_RUNS)
-    measure(xgb_predict_of_test_data,  "XGBOOST predict (test data) ", N_PERF_RUNS)
+    measure(xgb__stock_predict, "XGBOOST Stock predict (test data)", N_PERF_RUNS)
+    measure(xgb_daal_predict,  "XGBOOST Daal predict (test data) ", N_PERF_RUNS)
    
-    
-#     print("Compute quality metrics...")
-
-#     test_loglos = compute_logloss(y_test, daal_prediction_test)
-
-#     print("LogLoss for test  data set = {:.6f}".format(test_loglos))
 
 if __name__ == '__main__':
     main()
