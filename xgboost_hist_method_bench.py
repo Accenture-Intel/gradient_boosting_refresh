@@ -62,7 +62,7 @@ def load_dataset(dataset):
         xgb_params['objective'] = 'binary:logistic'
     else:
         xgb_params['objective'] = 'multi:softprob'
-    xgb_params['num_class'] = n_classes
+        xgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
