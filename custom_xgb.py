@@ -6,23 +6,6 @@ import os
 import sys
 import requests
 
-if sys.version_info[0] >= 3:
-    from urllib.request import urlretrieve  # pylint: disable=import-error,no-name-in-module
-else:
-    from urllib import urlretrieve  # pylint: disable=import-error,no-name-in-module
-
-DATASET_DIR="./data/"
-
-def download_file(url):
-    local_filename = DATASET_DIR + url.split('/')[-1]
-    with requests.get(url, stream=True) as r:
-        r.raise_for_status()
-        with open(local_filename, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=2**20):
-                if chunk:
-                    f.write(chunk)
-    return local_filename
-
 def load_higgs(nrows_train, nrows_test, dtype):
     """
     Higgs dataset from UCI machine learning repository (
@@ -31,12 +14,14 @@ def load_higgs(nrows_train, nrows_test, dtype):
     NumberOfFeatures:28
     NumberOfInstances:11M
     """
-    if not os.path.isfile(DATASET_DIR + "HIGGS.csv.gz"):
+    if not os.path.isfile("./data/HIGGS.csv.gz"):
         print("Loading data set...")
-        download_file("https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz")
+        url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz"
+        myfile = requests.get(url)
+        open('./data/HIGGS.csv.gz', 'wb').write(myfile.content)
 
     print("Reading data set...")
-    data = pd.read_csv(DATASET_DIR + "HIGGS.csv.gz", delimiter=",", header=None, compression="gzip", dtype=dtype, nrows=nrows_train+nrows_test)
+    data = pd.read_csv("./data/HIGGS.csv.gz", delimiter=",", header=None, compression="gzip", dtype=dtype, nrows=nrows_train+nrows_test)
     print("Pre-processing data set...")
 
     data = data[list(data.columns[1:])+list(data.columns[0:1])]
