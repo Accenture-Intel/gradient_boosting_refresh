@@ -18,7 +18,7 @@ xgb_params = {
     "min_child_weight":             0,
     'max_depth':                    8,
     'max_leaves':                   2**8,
-    'objective':                    'binary:logistic',
+    'objective':                    'multi:softprob',
     'predictor':                    'cpu_predictor',
     'tree_method':                  'hist',
     'n_estimators':                 1000
