@@ -83,7 +83,7 @@ def main():
 
     print("Running ...")
     measure(xbg_fit,                   "XGBOOST training            ", N_PERF_RUNS)
-    measure(xgb__stock_predict, "XGBOOST Stock predict (test data)", N_PERF_RUNS)
+    measure(xgb_stock_predict, "XGBOOST Stock predict (test data)", N_PERF_RUNS)
     measure(xgb_daal_predict,  "XGBOOST Daal predict (test data) ", N_PERF_RUNS)
    
 
