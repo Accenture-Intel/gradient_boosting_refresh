@@ -33,7 +33,7 @@ def xbg_fit():
 def xgb_predict_of_train_data():
     global daal_prediction_train, pred_train_time
     start = time.time()
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(y_train, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
     pred_train_time = time.time() - start
 
 def xgb_predict_of_test_data():
