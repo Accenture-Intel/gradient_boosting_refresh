@@ -84,9 +84,7 @@ def main():
     measure(xbg_fit,                   "XGBOOST training            ", N_PERF_RUNS)
 #     measure(xgb_predict_of_train_data, "XGBOOST predict (train data)", N_PERF_RUNS)
     measure(xgb_predict_of_test_data,  "XGBOOST predict (test data) ", N_PERF_RUNS)
-    
-    print("Prediction Train Dataset Time: ", pred_train_time)
-    print("Prediction Test Dataset Time: ", pred_test_time)
+   
     
     print("Compute quality metrics...")
 
