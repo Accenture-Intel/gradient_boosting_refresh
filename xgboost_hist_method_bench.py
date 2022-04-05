@@ -26,7 +26,7 @@ xgb_params = {
 
 def xbg_fit():
     global model_xgb, daal_model
-    dtrain = xgb.DMatrix(train_data, train_label)  
+    dtrain = xgb.DMatrix(x_train, y_train)  
     model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
     daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
 
