@@ -84,6 +84,6 @@ import daal4py as d4p
 
 daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
 start = time.time()
-daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(test_label, daal_model)
+daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(test_data, daal_model)
 inf_daal_time = time.time() - start
 print("Daal4py XGBoost: ", inf_daal_time)
