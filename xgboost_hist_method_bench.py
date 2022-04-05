@@ -26,22 +26,20 @@ xgb_params = {
 
 def xbg_fit():
     global model_xgb, daal_model
-    dtrain = xgb.DMatrix(x_train, label=y_train)
+    dtrain = xgb.DMatrix(train_data, train_label)  
     model_xgb = xgb.train(xgb_params, dtrain, xgb_params['n_estimators'])
     daal_model = d4p.get_gbt_model_from_xgboost(model_xgb)
 
 def xgb_predict_of_train_data():
     global daal_prediction_train, pred_train_time
-    dtest = xgb.DMatrix(x_train)
     start = time.time()
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(y_train, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(y_train, daal_model)
     pred_train_time = time.time() - start
 
 def xgb_predict_of_test_data():
     global daal_prediction_test, pred_test_time
-    dtest = xgb.DMatrix(x_test)
     start = time.time()
-    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes).compute(x_test, daal_model)
+    daal_prediction = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
     pred_test_time = time.time() - start
 
 
@@ -73,7 +71,7 @@ def load_dataset(dataset):
 def parse_args():
     global N_PERF_RUNS
     parser = argparse.ArgumentParser()
-    parser.add_argument('--n_iter', required=False, type=int, default=1000)
+#     parser.add_argument('--n_iter', required=False, type=int, default=1000)
     parser.add_argument('--n_runs', default=N_PERF_RUNS, required=False, type=int)
 #     parser.add_argument('--hw', choices=['cpu', 'gpu'], metavar='stage', required=False, default='cpu')
 #     parser.add_argument('--log', metavar='stage', required=False, type=bool, default=False)
