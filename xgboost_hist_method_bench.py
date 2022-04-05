@@ -86,11 +86,11 @@ def main():
     measure(xgb_predict_of_test_data,  "XGBOOST predict (test data) ", N_PERF_RUNS)
    
     
-    print("Compute quality metrics...")
+#     print("Compute quality metrics...")
 
-    test_loglos = compute_logloss(y_test, daal_prediction_test)
+#     test_loglos = compute_logloss(y_test, daal_prediction_test)
 
-    print("LogLoss for test  data set = {:.6f}".format(test_loglos))
+#     print("LogLoss for test  data set = {:.6f}".format(test_loglos))
 
 if __name__ == '__main__':
     main()
