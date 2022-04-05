@@ -1,6 +1,5 @@
 import argparse
 import xgboost as xgb
-import daal4py as d4p
 import time
 from bench_utils import *
 
