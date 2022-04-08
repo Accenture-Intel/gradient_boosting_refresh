@@ -14,7 +14,7 @@ lgb_params = {
 }
 
 def xbg_fit():
-    global daal_model
+    global daal_model, model_lgb
     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
 
 def xgb_stock_predict():
