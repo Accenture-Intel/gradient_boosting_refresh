@@ -21,28 +21,28 @@ lgb_params = {
 #     'min_data_in_leaf' : 0,
 #     'min_sum_hessian_in_leaf' : 100
     
-    'task': 'train',
-    'boosting_type': 'gbdt',
-    'objective': 'regression',
-    'metric': ['rmse'],
-    'device': 'cpu',
-    'num_leaves': 31,
-    'bagging_fraction': 0.5,
-    'feature_fraction': 0.5,
-    'learning_rate': 0.001,
-    'verbose': 0,
-    'max_bin': 255,
+#     'task': 'train',
+#     'boosting_type': 'gbdt',
+#     'objective': 'regression',
+#     'metric': ['rmse'],
+#     'device': 'cpu',
+#     'num_leaves': 31,
+#     'bagging_fraction': 0.5,
+#     'feature_fraction': 0.5,
+#     'learning_rate': 0.001,
+#     'verbose': 0,
+#     'max_bin': 255,
 }
 
 def xbg_fit():
-    global model_lgb #daal_model, model_lgb
-    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
-#     model = LGBMClassifier()
-#     model.fit(x_train, y_train)
+    global model #daal_model, model_lgb
+#     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+    model = LGBMClassifier(objective='regression')
+    model.fit(x_train, y_train)
 
 def xgb_stock_predict():
-    result_predict_xgb_test = model_lgb.predict(x_test)
-#     model.predict(x_train)
+#     result_predict_xgb_test = model_lgb.predict(x_test)
+    model.predict(x_test)
     
 
 def xgb_daal_predict():
