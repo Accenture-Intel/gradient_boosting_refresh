@@ -8,11 +8,17 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 lgb_params = {
-    'boosting_type':     'gbdt',
-    'learning_rate':      0.01,
-    'verbosity':         0,
-    'num_leaves':        50,
-    'max_depth':         25
+#     'boosting_type':     'gbdt',
+#     'learning_rate':      0.01,
+#     'verbosity':         0,
+#     'num_leaves':        50,
+#     'max_depth':         25
+    learning_rate = 0.1
+    num_leaves = 255
+    num_trees = 500
+    num_threads = 16
+    min_data_in_leaf = 0
+    min_sum_hessian_in_leaf = 100
 }
 
 def xbg_fit():
