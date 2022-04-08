@@ -29,7 +29,7 @@ def xbg_fit():
 
 def xgb_stock_predict():
 #     result_predict_xgb_test = model_lgb.predict(x_test)
-    model.predict(test_data)
+    model.predict(x_test)
     
 
 def xgb_daal_predict():
