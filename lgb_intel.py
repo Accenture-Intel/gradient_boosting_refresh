@@ -71,13 +71,13 @@ def load_dataset(dataset):
     x_train, y_train, x_test, y_test, n_classes = datasets_dict[dataset](DTYPE)
     print("n_classes: ", n_classes)
 
-    if n_classes == -1:
-        lgb_params['objective'] = 'regression'
-    elif n_classes == 2:
-        lgb_params['objective'] = 'binary'
-    else:
-        lgb_params['objective'] = 'multiclass'
-        lgb_params['num_class'] = n_classes
+#     if n_classes == -1:
+#         lgb_params['objective'] = 'regression'
+#     elif n_classes == 2:
+#         lgb_params['objective'] = 'binary'
+#     else:
+#         lgb_params['objective'] = 'multiclass'
+#         lgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
