@@ -7,7 +7,7 @@ from lightgbm import LGBMClassifier
 N_PERF_RUNS = 5
 DTYPE=np.float32
 
-lgb_params = {
+# lgb_params = {
 #     'boosting_type':     'gbdt',
 #     'learning_rate':      0.01,
 #     'verbosity':         0,
@@ -32,7 +32,7 @@ lgb_params = {
 #     'learning_rate': 0.001,
 #     'verbose': 0,
 #     'max_bin': 255,
-}
+# }
 
 def xbg_fit():
     global model #daal_model, model_lgb
