@@ -8,7 +8,7 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 lgb_params = {
-#     'boosting_type':     'gbdt',
+    'boosting_type':     'gbdt',
 #     'learning_rate':      0.01,
 #     'verbosity':         0,
 #     'num_leaves':        50,
