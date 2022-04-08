@@ -30,7 +30,7 @@ lgb_params = {
     'bagging_fraction': 0.5,
     'feature_fraction': 0.5,
     'learning_rate': 0.001,
-    'verbose': 2,
+    'verbose': 0,
     'max_bin': 255,
 }
 
