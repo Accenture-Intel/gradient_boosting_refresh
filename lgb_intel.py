@@ -9,7 +9,7 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 lgb_params = {
-    'boosting_type':     'gbdt',
+#     'boosting_type':     'gbdt',
 #     'learning_rate':      0.01,
 #     'verbosity':         0,
 #     'num_leaves':        50,
@@ -31,7 +31,7 @@ lgb_params = {
     'bagging_fraction': 0.5,
     'feature_fraction': 0.5,
     'learning_rate': 0.001,
-    'verbose': 2,
+    'verbose': 0,
     'max_bin': 255,
 }
 
