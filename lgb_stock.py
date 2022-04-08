@@ -41,7 +41,7 @@ def xbg_fit():
 #     model.fit(x_train, y_train)
 
 def xgb_stock_predict():
-    result_predict_xgb_test = model_lgb.predict(x_train)
+    result_predict_xgb_test = model_lgb.predict(x_test)
 #     model.predict(x_train)
     
 
