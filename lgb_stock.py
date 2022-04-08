@@ -44,12 +44,12 @@ def load_dataset(dataset):
     print("n_classes: ", n_classes)
 
     if n_classes == -1:
-        xgb_params['objective'] = 'regression'
+        lgb_params['objective'] = 'regression'
     elif n_classes == 2:
-        xgb_params['objective'] = 'binary'
+        lgb_params['objective'] = 'binary'
     else:
-        xgb_params['objective'] = 'multiclass'
-        xgb_params['num_class'] = n_classes
+        lgb_params['objective'] = 'multiclass'
+        lgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
