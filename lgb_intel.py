@@ -8,7 +8,7 @@ from lightgbm import LGBMClassifier
 N_PERF_RUNS = 5
 DTYPE=np.float32
 
-lgb_params = {
+# lgb_params = {
 #     'boosting_type':     'gbdt',
 #     'learning_rate':      0.01,
 #     'verbosity':         0,
@@ -22,26 +22,26 @@ lgb_params = {
 #     'min_data_in_leaf' : 0,
 #     'min_sum_hessian_in_leaf' : 100
     
-    'task': 'train',
-    'boosting_type': 'gbdt',
-    'objective': 'regression',
-    'metric': ['rmse'],
-    'device': 'cpu',
-    'num_leaves': 31,
-    'bagging_fraction': 0.5,
-    'feature_fraction': 0.5,
-    'learning_rate': 0.001,
-    'verbose': 0,
-    'max_bin': 255,
-}
+#     'task': 'train',
+#     'boosting_type': 'gbdt',
+#     'objective': 'regression',
+#     'metric': ['rmse'],
+#     'device': 'cpu',
+#     'num_leaves': 31,
+#     'bagging_fraction': 0.5,
+#     'feature_fraction': 0.5,
+#     'learning_rate': 0.001,
+#     'verbose': 0,
+#     'max_bin': 255,
+# }
 
 def xbg_fit():
     global model, daal_model
-    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
-    daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
-#     model = LGBMClassifier()
-#     model.fit(x_train, y_train)
-#     daal_model = d4p.get_gbt_model_from_lightgbm(model.booster_)
+#     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+#     daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
+    model = LGBMClassifier()
+    model.fit(x_train, y_train)
+    daal_model = d4p.get_gbt_model_from_lightgbm(model.booster_)
 
 def xgb_stock_predict():
     global daal_prediction_train
