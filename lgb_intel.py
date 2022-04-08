@@ -14,7 +14,7 @@ lgb_params = {
 #     'num_leaves':        50,
 #     'max_depth':         25
     'learning_rate' : 0.1,
-    'num_leaves' : 255,
+    'num_leaves' : 100,
     'num_trees' : 500,
     'num_threads' : 16,
     'min_data_in_leaf' : 0,
