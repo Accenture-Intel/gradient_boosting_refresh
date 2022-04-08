@@ -2,6 +2,7 @@ import argparse
 import lightgbm as lgb
 import time
 from bench_utils import *
+from lightgbm import LGBMClassifier
 
 N_PERF_RUNS = 5
 DTYPE=np.float32
@@ -21,12 +22,15 @@ lgb_params = {
 }
 
 def xbg_fit():
-    global daal_model, model_lgb
-    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+    global model #daal_model, model_lgb
+#     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+    model = LGBMClassifier()
+    model.fit(x_train, y_train)
 
 def xgb_stock_predict():
-    global daal_prediction_train
-    result_predict_xgb_test = model_lgb.predict(x_test)
+#     result_predict_xgb_test = model_lgb.predict(x_test)
+    model.predict(test_data)
+    
 
 def xgb_daal_predict():
     global daal_prediction_test
