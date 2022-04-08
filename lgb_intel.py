@@ -3,6 +3,7 @@ import lightgbm as lgb
 import daal4py as d4p
 import time
 from bench_utils import *
+from lightgbm import LGBMClassifier
 
 N_PERF_RUNS = 5
 DTYPE=np.float32
@@ -22,9 +23,12 @@ lgb_params = {
 }
 
 def xbg_fit():
-    global daal_model
-    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
-    daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
+    global model, daal_model
+#     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+#     daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
+    model = LGBMClassifier()
+    model.fit(x_train, y_train)
+    daal_model = d4p.get_gbt_model_from_lightgbm(model.booster_)
 
 def xgb_stock_predict():
     global daal_prediction_train
@@ -33,8 +37,8 @@ def xgb_stock_predict():
 
 def xgb_daal_predict():
     global daal_prediction_test
-    daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
-
+#     daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
+    d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(test_data, daal_model)
 
 def load_dataset(dataset):
     global x_train, y_train, x_test, y_test, n_classes
