@@ -14,21 +14,34 @@ lgb_params = {
 #     'verbosity':         0,
 #     'num_leaves':        50,
 #     'max_depth':         25
-    'learning_rate' : 0.1,
-    'num_leaves' : 100,
-    'num_trees' : 500,
-    'num_threads' : 16,
-    'min_data_in_leaf' : 0,
-    'min_sum_hessian_in_leaf' : 100
+    
+#     'learning_rate' : 0.1,
+#     'num_leaves' : 100,
+#     'num_trees' : 500,
+#     'num_threads' : 16,
+#     'min_data_in_leaf' : 0,
+#     'min_sum_hessian_in_leaf' : 100
+    
+    'task': 'train',
+    'boosting_type': 'gbdt',
+    'objective': 'regression',
+    'metric': ['rmse'],
+    'device': 'cpu',
+    'num_leaves': 31,
+    'bagging_fraction': 0.5,
+    'feature_fraction': 0.5,
+    'learning_rate': 0.001,
+    'verbose': 2,
+    'max_bin': 255,
 }
 
 def xbg_fit():
     global model, daal_model
-#     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
-#     daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
-    model = LGBMClassifier()
-    model.fit(x_train, y_train)
-    daal_model = d4p.get_gbt_model_from_lightgbm(model.booster_)
+    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+    daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
+#     model = LGBMClassifier()
+#     model.fit(x_train, y_train)
+#     daal_model = d4p.get_gbt_model_from_lightgbm(model.booster_)
 
 def xgb_stock_predict():
     global daal_prediction_train
@@ -38,7 +51,8 @@ def xgb_stock_predict():
 def xgb_daal_predict():
     global daal_prediction_test
 #     daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
-    d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
+#     d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
+    d4p.gbt_regression_prediction().compute(x_train, daal_model).prediction
 
 def load_dataset(dataset):
     global x_train, y_train, x_test, y_test, n_classes
