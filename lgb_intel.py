@@ -11,7 +11,8 @@ lgb_params = {
     'boosting_type':     'gbdt',
     'learning_rate':      0.01,
     'verbosity':         0,
-    'max_depth':         10
+    'num_leaves':        50,
+    'max_depth':         25
 }
 
 def xbg_fit():
