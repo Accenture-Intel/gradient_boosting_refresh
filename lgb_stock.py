@@ -7,12 +7,18 @@ from lightgbm import LGBMClassifier
 N_PERF_RUNS = 5
 DTYPE=np.float32
 
-# lgb_params = {
-#     'boosting_type':     'gbdt',
-#     'learning_rate':      0.01,
-#     'verbosity':         0,
-#     'num_leaves':        50,
-#     'max_depth':         25
+lgb_params = {
+    "reg-alpha": 0.9,
+    "max-bin": 256,
+    "scale-pos-weight": 2,
+    "learning-rate": 0.1,
+    "subsample": 1,
+    "reg-lambda": 1,
+    "min-child-weight": 0,
+    "max-depth": 8,
+    "max-leaves": 256,
+    "n-estimators": 1000,
+    "objective": "binary"
     
 #     'learning_rate' : 0.1,
 #     'num_leaves' : 100,
@@ -32,22 +38,21 @@ DTYPE=np.float32
 #     'learning_rate': 0.001,
 #     'verbose': 0,
 #     'max_bin': 255,
-# }
+}
 
 def xbg_fit():
-    global model #daal_model, model_lgb
-#     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
-    model = LGBMClassifier(objective='regression')
-    model.fit(x_train, y_train)
+    global model_lgb
+    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+
 
 def xgb_stock_predict():
 #     result_predict_xgb_test = model_lgb.predict(x_test)
-    model.predict(x_test)
+    daal_prediction = model_lgb.predict(test_data)
     
 
 def xgb_daal_predict():
     global daal_prediction_test
-    daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
+#     daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
 
 
 def load_dataset(dataset):
