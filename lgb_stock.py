@@ -46,8 +46,8 @@ def xbg_fit():
 
 
 def xgb_stock_predict():
-#     result_predict_xgb_test = model_lgb.predict(x_test)
-    daal_prediction = model_lgb.predict(x_test)
+#     result_predict_xgb_test = model_lgb.predict(x_train)
+    prediction = model_lgb.predict(x_train)
     
 
 def xgb_daal_predict():
