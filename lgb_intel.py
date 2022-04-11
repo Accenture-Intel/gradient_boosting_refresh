@@ -29,7 +29,8 @@ lgb_params = {
     "max-depth": 8,
     "max-leaves": 256,
     "n-estimators": 200,
-    "objective": "multiclass"
+    "objective": "multiclass",
+    "num_class": n_classes
 }
 
 def xbg_fit():
