@@ -41,7 +41,7 @@ lgb_params = {
 }
 
 def xbg_fit():
-    global model, daal_model
+    global model_lgb, daal_model
     model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
     daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
 
