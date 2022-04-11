@@ -52,7 +52,7 @@ def xgb_stock_predict():
 
 def xgb_daal_predict():
     global daal_prediction_test
-    daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
+    daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_train, daal_model)
 #     d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
 #     d4p.gbt_regression_prediction().compute(x_test, daal_model).prediction
 
