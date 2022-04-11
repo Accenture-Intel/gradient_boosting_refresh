@@ -8,36 +8,28 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 lgb_params = {
-    "reg-alpha": 0.9,
+#     "reg-alpha": 0.9,
+#     "max-bin": 256,
+#     "scale-pos-weight": 2,
+#     "learning-rate": 0.1,
+#     "subsample": 1,
+#     "reg-lambda": 1,
+#     "min-child-weight": 0,
+#     "max-depth": 8,
+#     "max-leaves": 256,
+#     "n-estimators": 1000,
+#     "objective": "binary"
+    
     "max-bin": 256,
-    "scale-pos-weight": 2,
-    "learning-rate": 0.1,
+    "learning-rate": 0.3,
     "subsample": 1,
-    "reg-lambda": 1,
-    "min-child-weight": 0,
+    "reg-lambda": 2,
+    "min-child-weight": 1,
+    "min-split-loss": 0.1,
     "max-depth": 8,
     "max-leaves": 256,
-    "n-estimators": 1000,
-    "objective": "binary"
-    
-#     'learning_rate' : 0.1,
-#     'num_leaves' : 100,
-#     'num_trees' : 500,
-#     'num_threads' : 16,
-#     'min_data_in_leaf' : 0,
-#     'min_sum_hessian_in_leaf' : 100
-    
-#     'task': 'train',
-#     'boosting_type': 'gbdt',
-#     'objective': 'regression',
-#     'metric': ['rmse'],
-#     'device': 'cpu',
-#     'num_leaves': 31,
-#     'bagging_fraction': 0.5,
-#     'feature_fraction': 0.5,
-#     'learning_rate': 0.001,
-#     'verbose': 0,
-#     'max_bin': 255,
+    "n-estimators": 200,
+    "objective": "multiclass"
 }
 
 def xbg_fit():
@@ -47,7 +39,7 @@ def xbg_fit():
 
 def xgb_stock_predict():
 #     result_predict_xgb_test = model_lgb.predict(x_train)
-    prediction = model_lgb.predict(x_train)
+    prediction = model_lgb.predict(x_test)
     
 
 def xgb_daal_predict():
