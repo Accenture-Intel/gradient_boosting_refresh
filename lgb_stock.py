@@ -68,7 +68,7 @@ def load_dataset(dataset):
 #         lgb_params['objective'] = 'regression'
 #     elif n_classes == 2:
 #         lgb_params['objective'] = 'binary'
-    if lgb_params['objective'] = 'multiclass':
+    if lgb_params['objective'] == 'multiclass':
         lgb_params['num_class'] = n_classes
 
 def parse_args():
