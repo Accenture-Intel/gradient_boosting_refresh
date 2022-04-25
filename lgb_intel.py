@@ -8,17 +8,6 @@ N_PERF_RUNS = 5
 DTYPE=np.float32
 
 lgb_params = {
-#     "reg-alpha": 0.9,
-#     "max-bin": 256,
-#     "scale-pos-weight": 2,
-#     "learning-rate": 0.1,
-#     "subsample": 1,
-#     "reg-lambda": 1,
-#     "min-child-weight": 0,
-#     "max-depth": 8,
-#     "max-leaves": 256,
-#     "n-estimators": 1000,
-#     "objective": "binary"
     
     "max-bin": 256,
     "learning-rate": 0.3,
