@@ -101,7 +101,7 @@ To access the scripts and install requirements from one place, follow the steps 
 
 The benchmark downloads required datasets from the Internet automatically, you don't need to worry about it.
 
-_Note: For available parameters, please refer to the [Available Parameters](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#available-parameters) section in the Appendix.
+_Note: For available parameters, please refer to the [Available Parameters](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#available-parameters) section in the Appendix._
 
 ## 📊 Results 📊
 The comparison shown in the results is meant to showcase how Intel's optimized XGBoost yields a more favorable training time compared to the stock XGBoost package. These results will be updated as updated versions of Intel's optimized XGBoost are released as well as when newer Intel EC2 instances are released.
