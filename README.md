@@ -67,21 +67,41 @@ After pressing continue on the prompt, select the **m6i** instance from the _All
 Once all of that is complete, you can launch & connect to the Deep Learning AMI (Ubuntu 18.04) Version 57.0
 
 #### Cloning into Repo for Install and Code Deployment
-To access the scripts and install requirements from one place, clone into the XGBoost repository. In the repository you will find several scripts and documents necessary for running the workloads, including required library installs.
-```
-conda create -n test -y python=3.7
-conda activate test
-conda install -c conda-forge -y daal4py
-conda install -c conda-forge -y scikit-learn
-conda install -c conda-forge -y pandas
-conda install -c conda-forge -y xgboost
-git clone https://github.com/Accenture-Intel/XGBoost
-cd XGboost
-python3 run.py -m="ModelName" -o="Observations"
-```
-_Note: For "ModelName", fill in either one of the model names from the [list in the appendix](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#values-within-model-name--m-parameter) to test one of the two algorithms._
+To access the scripts and install requirements from one place, follow the steps below.
 
-_Note: For "Observations", insert a numerical value here for the number of observations you wish to scale the synthetic dataset to._
+1. Obtain python package of XGBoost. There are a few options:
+    - Build XGBoost from sources manually:
+        ```
+        git clone --recursive https://github.com/dmlc/xgboost
+        cd xgboost
+        make -j8
+        cd python-package
+        python setup.py install
+        cd ..
+        ```
+    - Or download the latest available version from pip:
+        ```
+        pip install xgboost
+        ```
+    - More details are available [here](https://xgboost.readthedocs.io/en/latest/build.html)
+
+2. Resolve dependencies on other python packages. For now it has dependencies on further packages: requests, scikit-learn, pandas, numpy. You can easily download them through pip:
+    ```
+    pip install requests scikit-learn pandas
+    ```
+3. Run benchmarks with specified parameters:
+    ```
+    cd tests/benchmark/hist_method
+    python xgboost_bench.py  --dataset <dataset> \
+                             --hw <platform>     \
+                             --n_iter <n_iter>   \
+                             --n_runs <n_runs>   \
+                             --log <enable_log>
+    ```
+
+The benchmark downloads required datasets from the Internet automatically, you don't need to worry about it.
+
+_Note: For available parameters, please refer to the [Avaialbe Parameters](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#appendix-available-parameters) section in the Appendix.
 
 ## 📊 Results 📊
 The comparison shown in the results is meant to showcase how Intel's optimized XGBoost yields a more favorable training time compared to the stock XGBoost package. These results will be updated as updated versions of Intel's optimized XGBoost are released as well as when newer Intel EC2 instances are released.
@@ -98,13 +118,12 @@ The metric displayed here accounts for both the performance and cost to run each
 </div>
 
 ## Appendix
-### Values within Model Name (-m) parameter
-Linear Regression - lm, lm_training, lm_patch, lm_patch_training, daal_lm, daal_lm_training  
-logistic Regression - logit, logit_training, logit_patch, logit_patch_training, daal_logit, daal_logit_training  
-Random Forest - rf, rf_training, rf_patch, rf_patch_training, daal_rf, daal_rf_training  
-K-Means - kmeans, kmeans_training, kmeans_patch, kmeans_patch_training, daal_kmeans_training  
-DBSCAN - dbs, dbs_patch  
-XGBoost - xgboost
+### Available parameters:
+* **dataset**    - dataset to use in benchmark. Possible values: *"higgs1m", "airline-ohe", "msrank-10k"* [Required].
+* **platform**   - specify platform for computation. Possible values: *cpu, gpu*. [Default=cpu].
+* **n_iter**     - amount of boosting iterations. Possible values: *integer > 0*. [Default=1000].
+* **n_runs**     - number of training and prediction measurements to obtain stable performance results. Possible values: *integer > 0*. [Default=5].
+* **enable_log** - if False - no additional debug info ("silent"=1). If True ("verbosity"=3) it prints execution time by kernels. Possible values: *True, False*. [Default=False].
 
 ## Used By
 
@@ -113,42 +132,3 @@ This project is used by the following companies:
 
 
 
-## How to run the benchmarks:
-1. Obtain python package of XGBoost. There are a few options:
-    - Build XGBoost from sources manually:
-        ```sh
-        git clone --recursive https://github.com/dmlc/xgboost
-        cd xgboost
-        make -j8
-        cd python-package
-        python setup.py install
-        cd ..
-        ```
-    - Or download the latest available version from pip:
-        ```sh
-        pip install xgboost
-        ```
-    - More details are available [here](https://xgboost.readthedocs.io/en/latest/build.html)
-
-2. Resolve dependencies on other python packages. For now it has dependencies on further packages: requests, scikit-learn, pandas, numpy. You can easily download them through pip:
-    ```sh
-        pip install requests scikit-learn pandas
-    ```
-3. Run benchmarks with specified parameters:
-    ```sh
-    cd tests/benchmark/hist_method
-    python xgboost_bench.py  --dataset <dataset> \
-                             --hw <platform>     \
-                             --n_iter <n_iter>   \
-                             --n_runs <n_runs>   \
-                             --log <enable_log>
-    ```
-
-The benchmark downloads required datasets from the Internet automatically, you don't need to worry about it.
-
-## Available parameters:
-* **dataset**    - dataset to use in benchmark. Possible values: *"higgs1m", "airline-ohe", "msrank-10k"* [Required].
-* **platform**   - specify platform for computation. Possible values: *cpu, gpu*. [Default=cpu].
-* **n_iter**     - amount of boosting iterations. Possible values: *integer > 0*. [Default=1000].
-* **n_runs**     - number of training and prediction measurements to obtain stable performance results. Possible values: *integer > 0*. [Default=5].
-* **enable_log** - if False - no additional debug info ("silent"=1). If True ("verbosity"=3) it prints execution time by kernels. Possible values: *True, False*. [Default=False].
