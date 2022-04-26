@@ -17,7 +17,7 @@
  - [Appendix](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#appendix)
 
 ## Description
-As part of an Accenture-Intel partnership aimed at accelerating client transformation and driving co-innovation through cutting-edge technology and inudstry experience, we are showcasing Intel's Ice Lake capabilities through an opitimized XGBoost framework. Through this repository, we can share our workloads and findings when running on the instances we are benchmarking. We invite you to explore our workloads and build upon them using the Intel's platform.
+As part of an Accenture-Intel partnership aimed at accelerating client transformation and driving co-innovation through cutting-edge technology and inudstry experience, we are showcasing Intel's Ice Lake capabilities through an opitimized XGBoost framework across multiple different datasets. Through this repository, we can share our workloads and findings when running on the instances we are benchmarking. We invite you to explore our workloads and build upon them using the Intel's platform.
 
 ## Accenture - Intel Partnership
 What do you get when you combine a company that “delivers on the promise of technology and human ingenuity” and another that “shapes the future of technology”?
@@ -29,7 +29,7 @@ To learn more about this partnership, follow this <a href="https://www.accenture
 
 ## Benchmark Details
 ### Description
-We used the XGBoost algorithm for classification training and inferencing benchmarks. XGBoost is a gradient boosting algorithm that uses decision trees as its “weak” predictorss. In our benchmark we used the a synthetic Boston Housing Dataset which is then scaled to different sizes.
+We used the XGBoost algorithm for classification training and inferencing benchmarks. XGBoost is a gradient boosting algorithm that uses decision trees as its “weak” predictors. In our benchmark we used the a synthetic Boston Housing Dataset which is then scaled to different sizes.
 
 ### Purpose
 The purpose of the XGBoost benchmark is to showcase its significant capabilities on Intel's latest Ice Lake as seen through the m6i instance. Our objectives were as follows: 1) Reach same performance at a cheaper price relative to previous generations, or 2) Reach better performance at the same price relative to previous generations.
@@ -42,10 +42,10 @@ Below is an visualization detailing the parameters and environment. This experim
 | ------------------------- | ----------------------------------------------------------|
 | ML Application            | Classification                                            |
 | ML Model                  | XGBoost                                                   |
-| ML Dataset                | Boston Housing (synthetic)                                |
+| ML Dataset                | Mortgage, Airline, Higgs, MSRank                          |
 | Hardware Targets          | CPUs                                                      |
 | AMI(s)                    | Deep Learning AMI (Ubuntu 18.04) Version 57.0             |
-| AWS EC2 Instance(s)       | Intel Ice Lake m6i.xlarge, Intel Cascade Lake m5n.xlarge |
+| AWS EC2 Instance(s)       | Intel Ice Lake m6i.xlarge, Intel Cascade Lake m5n.xlarge  |
 
 </div>
  
