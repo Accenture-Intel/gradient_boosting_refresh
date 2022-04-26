@@ -101,21 +101,14 @@ To access the scripts and install requirements from one place, follow the steps 
 
 The benchmark downloads required datasets from the Internet automatically, you don't need to worry about it.
 
-_Note: For available parameters, please refer to the [Avaialbe Parameters](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#appendix-available-parameters) section in the Appendix.
+___Note: For available parameters, please refer to the [Available Parameters](https://github.com/Accenture-Intel/xgboost_refresh/blob/main/README.md#available-parameters) section in the Appendix.__
 
 ## 📊 Results 📊
 The comparison shown in the results is meant to showcase how Intel's optimized XGBoost yields a more favorable training time compared to the stock XGBoost package. These results will be updated as updated versions of Intel's optimized XGBoost are released as well as when newer Intel EC2 instances are released.
 
 ### Performance
-The metric displayed here is accounts for the time taken to run each benchmark on multiple batch sizes, i.e. the throughput. As can be seen, the Intel-optimized version of XGBoost (daal4py) outperforms the vanilla version of XGBoost both on the old gen m5n (Cascade Lake) and new gen m6i (Ice Lake). The lower the time, the faster the throughput.
-<div align="center">
- <img width="480" alt="image" src="https://user-images.githubusercontent.com/91902558/164530221-115a66be-d745-4c97-8bf4-0577e852cd9c.png">
-</div>
+** pending **
 
-The metric displayed here accounts for both the performance and cost to run each benchmark, i.e. the price-performance. As can be seen, the Intel-optimized version of XGBoost (daal4py) outperforms the vanilla version of XGBoost both on the old gen m5n (Cascade Lake) and new gen m6i (Ice Lake). The base for the benchmark here was the vanilla version of XGBoost on the m5n.xlarge instance. The higher the multiple, the better the price-performance.
-<div align="center">
- <img width="435" alt="image" src="https://user-images.githubusercontent.com/91902558/164529704-c6758a91-951d-4ff2-b774-cc0ab217bbc7.png">
-</div>
 
 ## Appendix
 ### Available parameters:
