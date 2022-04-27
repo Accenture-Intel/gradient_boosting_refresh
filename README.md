@@ -118,6 +118,10 @@ The comparison shown in the results is meant to showcase how Intel's optimized X
 * **n_runs**     - number of training and prediction measurements to obtain stable performance results. Possible values: *integer > 0*. [Default=5].
 * **enable_log** - if False - no additional debug info ("silent"=1). If True ("verbosity"=3) it prints execution time by kernels. Possible values: *True, False*. [Default=False].
 
+### Sources:
+- https://xgboost.readthedocs.io/en/latest/build.html
+- https://github.com/dmlc/xgboost
+
 ## Used By
 
 This project is used by the following companies:
