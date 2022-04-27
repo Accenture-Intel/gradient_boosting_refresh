@@ -29,7 +29,7 @@ To learn more about this partnership, follow this <a href="https://www.accenture
 
 ## Benchmark Details
 ### Description
-We used the XGBoost algorithm for classification training and inferencing benchmarks. XGBoost is a gradient boosting algorithm that uses decision trees as its “weak” predictors. In our benchmark we used the a synthetic Boston Housing Dataset which is then scaled to different sizes.
+We used the XGBoost algorithm for classification training and inferencing benchmarks. XGBoost is a gradient boosting algorithm that uses decision trees as its “weak” predictors. In our benchmark we used a variety of available datasets, including datasets covering: Mortgages, Airlings, Higgs, and MSRank. This differs from the previous XGBoost work as it is a refresh of the capabilities Intel's Ice Lake provides across real datasets and not synthetic ones. It adds another perspective to the work previously completed.
 
 ### Purpose
 The purpose of the XGBoost benchmark is to showcase its significant capabilities on Intel's latest Ice Lake as seen through the m6i instance. Our objectives were as follows: 1) Reach same performance at a cheaper price relative to previous generations, or 2) Reach better performance at the same price relative to previous generations.
