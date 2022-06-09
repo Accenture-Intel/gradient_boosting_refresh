@@ -3,7 +3,6 @@ import lightgbm as lgb
 import time
 import daal4py as d4p
 from bench_utils import *
-from lightgbm import LGBMClassifier
 
 N_PERF_RUNS = 5
 DTYPE=np.float32
