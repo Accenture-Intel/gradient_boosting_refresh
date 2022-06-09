@@ -22,14 +22,14 @@ xgb_params = {
 #         "objective": "binary:logistic"
 
 ########### USE FOR MSRANK DATASET
-        "max-bin": 256,
-        "learning-rate": 0.3,
+        "max_bin": 256,
+        "learning_rate": 0.3,
         "subsample": 1,
-        "reg-lambda": 2,
-        "min-child-weight": 1,
-        "min-split-loss": 0.1,
-        "max-depth": 8,
-        "n-estimators": 200,
+        "reg_lambda": 2,
+        "min_child_weight": 1,
+        "min_split_loss": 0.1,
+        "max_depth": 8,
+        "n_estimators": 200,
         "objective": "multi:softprob",
         "num_class": 5
 }
