@@ -9,17 +9,17 @@ DTYPE=np.float32
 
 xgb_params = {
 ########### USE FOR HIGGS1M AND AIRLINE DATASET
-        "reg_alpha": 0.9,
-        "max_bin": 256,
-        "scale_pos_weight": 2,
-        "learning_rate": 0.1,
-        "subsample": 1,
-        "reg_lambda": 1,
-        "min_child_weight": 0,
-        "max_depth": 8,
-        "max_leaves": 256,
-        "n_estimators": 1000,
-        "objective": "binary:logistic"
+#         "reg_alpha": 0.9,
+#         "max_bin": 256,
+#         "scale_pos_weight": 2,
+#         "learning_rate": 0.1,
+#         "subsample": 1,
+#         "reg_lambda": 1,
+#         "min_child_weight": 0,
+#         "max_depth": 8,
+#         "max_leaves": 256,
+#         "n_estimators": 1000,
+#         "objective": "binary:logistic"
 
 ########### USE FOR MSRANK DATASET
         "max-bin": 256,
@@ -30,10 +30,11 @@ xgb_params = {
         "min-split-loss": 0.1,
         "max-depth": 8,
         "n-estimators": 200,
-        "objective": "multi:softprob"
+        "objective": "multi:softprob",
+        "num_class": 5
 }
 
-def xbg_fit():
+def xgb_fit():
     global model_xgb, daal_model
     dtrain = xgb.DMatrix(x_train, y_train)  
     model_xgb = xgb.train(xgb_params, dtrain, num_boost_round=100)
@@ -66,13 +67,13 @@ def load_dataset(dataset):
     x_train, y_train, x_test, y_test, n_classes = datasets_dict[dataset](DTYPE)
     print("n_classes: ", n_classes)
 
-    if n_classes == -1:
-        xgb_params['objective'] = 'reg:squarederror'
-    elif n_classes == 2:
-        xgb_params['objective'] = 'binary:logistic'
-    else:
-        xgb_params['objective'] = 'multi:softprob'
-        xgb_params['num_class'] = n_classes
+#     if n_classes == -1:
+#         xgb_params['objective'] = 'reg:squarederror'
+#     elif n_classes == 2:
+#         xgb_params['objective'] = 'binary:logistic'
+#     else:
+#         xgb_params['objective'] = 'multi:softprob'
+#         xgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
