@@ -1,0 +1,43 @@
+class Syscalls64:
+    SOCKET = 41 # sys_socket
+    CONNECT = 42 # sys_connect
+    ACCEPT = 43 # sys_accept
+    BIND = 49 # sys_bind
+    SETSOCKOPT = 54 # sys_setsockopt
+    RENAME = 82 # sys_rename
+    RMDIR = 84 # sys_rmdir
+    UNLINK = 87 # sys_unlink
+    CHMOD = 90 # sys_chmod
+    FCHMOD = 91 # sys_fchmod
+    CHOWN = 92 # sys_chown
+    FCHOWN = 93 # sys_fchown
+    PTRACE = 101 # sys_ptrace
+    FCHOWNAT = 260 # sys_fchownat
+    UNLINKAT = 263 # sys_unlinkat
+    RENAMEAT = 264 # sys_renameat
+    FCHMODAT = 268 # sys_fchmodat
+    ACCEPT4 = 288 # sys_accept4
+    RENAMEAT2 = 316 # sys_renameat2
+    BPF = 321 # sys_bpf
+
+class Syscalls32:
+    UNLINK = 10 # sys_unlink
+    CHMOD = 15 # sys_chmod
+    PTRACE = 26 # sys_ptrace
+    RENAME = 38 # sys_rename
+    RMDIR = 40 # sys_rmdir
+    FCHMOD = 94 # sys_fchmod
+    FCHOWN = 207 # sys_fchown
+    CHOWN = 212 # sys_chown
+    FCHOWNAT = 298 # sys_fchownat
+    UNLINKAT = 301 # sys_unlinkat
+    RENAMEAT = 302 # sys_renameat
+    FCHMODAT = 306 # sys_fchmodat
+    RENAMEAT2 = 353 # sys_renameat2
+    BPF = 357 # sys_bpf
+    SOCKET = 359 # sys_socket
+    BIND = 361 # sys_bind
+    CONNECT = 362 # sys_connect
+    ACCEPT4 = 364 # sys_accept4
+    ACCEPT = 364 # sys_accept - not present using same value as sys_accept4
+    SETSOCKOPT = 366 # sys_setsockopt

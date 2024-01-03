@@ -1,0 +1,170 @@
+<events>
+  <event id="231001">
+    <check_name>EDR Cloud CnC</check_name>
+    <tsg>
+      Some test connections to the Defender for Endpoints (CnC) cloud service URLs may have failed. Please make sure connections to cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#network-connections
+    </tsg>
+  </event>
+  <event id="331001">
+    <check_name>EDR Cloud CnC</check_name>
+    <tsg>
+      Some test connections to the Defender for Endpoints (CnC) cloud service URLs may have failed. Please make sure connections to cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#network-connections
+    </tsg>
+  </event>
+  <event id="230002">
+    <check_name>EDR Cloud CnC</check_name>
+    <tsg>Test connection to the Defender for Endpoints (CnC) cloud service completed successfully.</tsg>
+  </event>
+  <event id="330002">
+    <check_name>EDR Cloud CnC</check_name>
+    <tsg>Test connection to the Defender for Endpoints (CnC) cloud service completed successfully.</tsg>
+  </event>
+  <event id="232003">
+    <check_name>EDR Cloud CnC</check_name>
+    <tsg>
+      All test connections to the Defender for Endpoints (CnC) cloud service URLs have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#network-connections
+    </tsg>
+  </event>
+  <event id="332003">
+    <check_name>EDR Cloud CnC</check_name>
+    <tsg>
+      All test connections to the Defender for Endpoints (CnC) cloud service URLs have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#network-connections
+    </tsg>
+  </event>
+  <event id="231004">
+    <check_name>EDR Cloud Cyber</check_name>
+    <tsg>
+      Some test connections to the Defender for Endpoints (Cyber) cloud service URLs may have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#network-connections
+    </tsg>
+  </event>
+  <event id="331004">
+    <check_name>EDR Cloud Cyber</check_name>
+    <tsg>
+      Some test connections to the Defender for Endpoints (Cyber) cloud service URLs may have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#network-connections
+    </tsg>
+  </event>
+  <event id="230005">
+    <check_name>EDR Cloud Cyber</check_name>
+    <tsg>Test connection to the Defender for Endpoints (Cyber) cloud service completed successfully.</tsg>
+  </event>
+  <event id="330005">
+    <check_name>EDR Cloud Cyber</check_name>
+    <tsg>Test connection to the Defender for Endpoints (Cyber) cloud service completed successfully.</tsg>
+  </event>
+  <event id="232006">
+    <check_name>EDR Cloud Cyber</check_name>
+    <tsg>
+      All test connections to the Defender for Endpoints (Cyber) cloud service URLs have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#network-connections
+    </tsg>
+  </event>
+  <event id="332006">
+    <check_name>EDR Cloud Cyber</check_name>
+    <tsg>
+      All test connections to the Defender for Endpoints (Cyber) cloud service URLs have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#network-connections
+    </tsg>
+  </event>
+  <event id="231007">
+    <check_name>AV Cloud</check_name>
+    <tsg>
+      Some test connections to the Microsoft Defender Antivirus cloud service failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#network-connections
+    </tsg>
+  </event>
+  <event id="331007">
+    <check_name>AV Cloud</check_name>
+    <tsg>
+      Some test connections to the Microsoft Defender Antivirus cloud service failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#network-connections
+    </tsg>
+  </event>
+  <event id="230008">
+    <check_name>AV Cloud</check_name>
+    <tsg>Test connection to the Microsoft Defender Antivirus cloud service completed successfully.</tsg>
+  </event>
+  <event id="330008">
+    <check_name>AV Cloud</check_name>
+    <tsg>Test connection to the Microsoft Defender Antivirus cloud service completed successfully.</tsg>
+  </event>
+  <event id="232009">
+    <check_name>AV Cloud</check_name>
+    <tsg>
+      All test connections to the Defender Antivirus cloud service URLs have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#network-connections
+    </tsg>
+  </event>
+  <event id="332009">
+    <check_name>AV Cloud</check_name>
+    <tsg>
+      All test connections to the Defender Antivirus cloud service URLs have failed. Please make sure connections to the relevant cloud URLs are not blocked:
+      https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#network-connections
+    </tsg>
+  </event>
+  <event id="212001">
+    <check_name>Unsupported OS</check_name>
+    <tsg>Please note this device is running a MacOS edition or version that is not supported. Refer to the following article for a list of supported environments: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#system-requirements</tsg>
+  </event>
+  <event id="312001">
+    <check_name>Unsupported OS</check_name>
+    <tsg>Please note this device is running a Linux distribution or version that is not supported. Refer to the following article for a list of supported environments: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#system-requirements</tsg>
+  </event>
+  <event id="210038">
+    <check_name>Preview support</check_name>
+    <tsg>Please note that the support for this MacOS edition or version is in preview. Refer to the following article for a list of supported environments: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-mac#system-requirements</tsg>
+  </event>
+  <event id="310038">
+    <check_name>Preview support</check_name>
+    <tsg>Please note that the support for this Linux distribution or version is in preview. Refer to the following article for a list of supported environments: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-atp-linux#system-requirements</tsg>
+  </event>
+  <event id="210002">
+    <check_name>Process Running</check_name>
+    <tsg>All processes are up and running.</tsg>
+  </event>
+  <event id="310002">
+    <check_name>Process Running</check_name>
+    <tsg>All processes are up and running.</tsg>
+  </event>
+  <event id="212002">
+    <check_name>Process Running</check_name>
+    <tsg>Not all processes are up and running, please make sure MDE is installed correctly: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/mac-support-install</tsg>
+  </event>
+  <event id="312002">
+    <check_name>Process Running</check_name>
+    <tsg>Not all processes are up and running, please make sure MDE is installed correctly: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/linux-support-install</tsg>
+  </event>
+  <event id="311010">
+    <check_name>Conflicting Binaries</check_name>
+    <tsg>Test for known conflicting binaries to the Defender for Endpoints service found conflicts. Refer to the following article for more information on exclusion: https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/linux-exclusions?view=o365-worldwide </tsg>
+  </event>
+  <event id="221035">
+    <check_name>AntiSpoofing Ready</check_name>
+    <tsg>Device is not up-to-date and does not have anti-spoofing capability deployed. Please ensure you deploy the recommended security patch to protect the device from spoofing, for more information, please refer to: <a target='_blank' href='https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23278'>AntiSpoofing in Microsoft Defender for Endpoint</a>. \nContact Microsoft support if issue persists.</tsg>
+  </event>
+  <event id="321035">
+    <check_name>AntiSpoofing Ready</check_name>
+    <tsg>Device is not up-to-date and does not have anti-spoofing capability deployed. Please ensure you deploy the recommended security patch to protect the device from spoofing, for more information, please refer to: <a target='_blank' href='https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23278'>AntiSpoofing in Microsoft Defender for Endpoint</a>. \nContact Microsoft support if issue persists.</tsg>
+  </event>
+  <event id="221036">
+    <check_name>AntiSpoofing Unstable</check_name>
+    <tsg>Device is anti-spoofing capable but not in a stable state. Please ensure you deploy the recommended security patch to protect the device from spoofing, for more information, please refer to: <a target='_blank' href='https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23278'>AntiSpoofing in Microsoft Defender for Endpoint</a>. \nContact Microsoft support if issue persists.</tsg>
+  </event>
+  <event id="321036">
+    <check_name>AntiSpoofing Unstable</check_name>
+    <tsg>Device is anti-spoofing capable but not in a stable state. Please ensure you deploy the recommended security patch to protect the device from spoofing, for more information, please refer to: <a target='_blank' href='https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23278'>AntiSpoofing in Microsoft Defender for Endpoint</a>. \nContact Microsoft support if issue persists.</tsg>
+  </event>
+  <event id="220037">
+    <check_name>AntiSpoofing Stable</check_name>
+    <tsg>Device is anti-spoofing capable and in a stable state.</tsg>
+  </event>
+  <event id="320037">
+    <check_name>AntiSpoofing Stable</check_name>
+    <tsg>Device is anti-spoofing capable and in a stable state.</tsg>
+  </event>
+</events>
