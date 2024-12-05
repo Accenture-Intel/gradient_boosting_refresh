@@ -9,33 +9,28 @@ DTYPE=np.float32
 
 lgb_params = {
     
-    "max-bin": 256,
-    "learning-rate": 0.3,
-    "subsample": 1,
-    "reg-lambda": 2,
-    "min-child-weight": 1,
-    "min-split-loss": 0.1,
-    "max-depth": 8,
-    "max-leaves": 256,
-    "n-estimators": 200,
-    "objective": "multiclass"
+    'learning_rate': 0.3, 
+    'max_depth': 8, 
+    'colsample_bytree': 1, 
+    'colsample_bynode': 1, 
+    'reg_lambda': 1.0, 
+    'reg_alpha': 0.9, 
+    'scale_pos_weight': 2.0, 
+    'max_leaves': 256, 
+    'max_bin': 256, 
+    'objective': 'multiclass', 
+    'seed': 12345,
+    "n_estimators": 200,
 }
 
-def xbg_fit():
+def lgb_fit():
     global model_lgb, daal_model
-    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train), 100)
+    model_lgb = lgb.train(lgb_params, lgb.Dataset(x_train, y_train))
     daal_model = d4p.get_gbt_model_from_lightgbm(model_lgb)
 
-def xgb_stock_predict():
-    global daal_prediction_train
-    dtest = xgb.DMatrix(x_test)
-    result_predict_xgb_test = model_xgb.predict(dtest)
-
-def xgb_daal_predict():
+def lgb_daal_predict():
     global daal_prediction_test
-#     daal_prediction_test = d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_train, daal_model)
     d4p.gbt_classification_prediction(nClasses = n_classes, resultsToEvaluate="computeClassLabels", fptype='float').compute(x_test, daal_model)
-#     d4p.gbt_regression_prediction().compute(x_test, daal_model).prediction
 
 def load_dataset(dataset):
     global x_train, y_train, x_test, y_test, n_classes
@@ -51,25 +46,30 @@ def load_dataset(dataset):
         'airline-ohe':load_airline_one_hot
     }
 
+    datasets_objectives = {
+        'higgs1m': "binary",
+        'msrank-10k': "multiclass",
+        'airline-ohe': "binary"
+    }
+
+    lgb_params["objective"] = datasets_objectives[dataset]
+
     x_train, y_train, x_test, y_test, n_classes = datasets_dict[dataset](DTYPE)
     print("n_classes: ", n_classes)
 
-#     if n_classes == -1:
-#         lgb_params['objective'] = 'regression'
-#     elif n_classes == 2:
-#         lgb_params['objective'] = 'binary'
     if lgb_params['objective'] == 'multiclass':
         lgb_params['num_class'] = n_classes
 
 def parse_args():
     global N_PERF_RUNS
     parser = argparse.ArgumentParser()
-#     parser.add_argument('--n_iter', required=False, type=int, default=1000)
+    parser.add_argument('--n_iter', required=False, type=int, default=200)
     parser.add_argument('--n_runs', default=N_PERF_RUNS, required=False, type=int)
     parser.add_argument('--dataset', choices=['higgs1m', "airline-ohe", "msrank-10k"],
             metavar='stage', required=True)
 
     args = parser.parse_args()
+    lgb_params["n_estimators"] = args.n_iter
     N_PERF_RUNS = args.n_runs
 
     load_dataset(args.dataset)
@@ -79,9 +79,8 @@ def main():
     parse_args()
 
     print("Running ...")
-    measure(xbg_fit,                   "XGBOOST training            ", N_PERF_RUNS)
-#     measure(xgb_stock_predict, "XGBOOST Stock predict (test data)", N_PERF_RUNS)
-    measure(xgb_daal_predict,  "XGBOOST Daal predict (test data) ", N_PERF_RUNS)
+    measure(lgb_fit,                   "LightGBM training            ", N_PERF_RUNS)
+    measure(lgb_daal_predict,  "LightGBM Daal predict (test data) ", N_PERF_RUNS)
    
 
 if __name__ == '__main__':
